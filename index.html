@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>From My Heart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #2b2b38, #0f0f14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Poppins", sans-serif;
+      color: #e6e6ea;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 620px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 24px;
+      padding: 40px 32px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+      backdrop-filter: blur(12px);
+    }
+
+    .fade-in {
+      animation: fadeUp 1.4s ease forwards;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: 30px;
+      margin-bottom: 18px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.85;
+      margin: 14px 0;
+      color: #d6d6dc;
+    }
+
+    .soft {
+      color: #b8b8c5;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #aaa, transparent);
+      margin: 22px auto;
+      opacity: 0.6;
+    }
+
+    .heart {
+      text-align: center;
+      font-size: 26px;
+      margin: 16px 0;
+      animation: pulse 1.8s infinite;
+      opacity: 0.9;
+    }
+
+    .actions {
+      margin-top: 26px;
+      text-align: center;
+    }
+
+    button {
+      padding: 12px 28px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .final {
+      display: none;
+      margin-top: 26px;
+      text-align: center;
+      font-style: italic;
+      color: #cfcfd6;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- START SCREEN -->
+  <div class="container" id="startScreen">
+    <h1>One last thing</h1>
+    <p class="soft">Please read this when you are ready.</p>
+
+    <div class="actions">
+      <button onclick="startExperience()">Begin</button>
+    </div>
+  </div>
+
+  <!-- LETTER -->
+  <div class="container" id="letter" style="display:none;">
+    <h1>Dear Shweta,</h1>
+
+    <p>
+      I’m writing this without expectations — only honesty.
+      I came with good intentions: to celebrate you, to make you feel special,
+      and to spend time that actually meant something.
+    </p>
+
+    <p>
+      Somewhere in between, things didn’t go the way I hoped.
+      I understand now that I could have handled that moment better,
+      and I genuinely regret if my actions or reactions caused discomfort.
+    </p>
+
+    <p>
+      Please believe this — I never wanted drama, confusion, or heaviness.
+      Everything I did came from care, not from ego.
+      From feelings, not from control.
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+      Your happiness has always mattered to me more than being right,
+      more than explaining myself, more than holding on.
+      I would never intentionally bring stress or negativity into your life.
+    </p>
+
+    <div class="heart">🤍</div>
+
+    <p class="soft">
+      This is not to change your mind.<br/>
+      This is only to leave my truth with respect.
+    </p>
+
+    <div class="actions">
+      <button onclick="showFinal()">One last line</button>
+    </div>
+
+    <div class="final" id="finalText">
+      I respect whatever you feel and whatever you choose.<br/>
+      Take care — always.
+    </div>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="song" loop>
+    <source src="./assets/sorry-pune.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function startExperience() {
+      const song = document.getElementById("song");
+      const start = document.getElementById("startScreen");
+      const letter = document.getElementById("letter");
+
+      song.play().catch(() => {});
+      start.style.display = "none";
+      letter.style.display = "block";
+      letter.classList.add("fade-in");
+    }
+
+    function showFinal() {
+      document.getElementById("finalText").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
